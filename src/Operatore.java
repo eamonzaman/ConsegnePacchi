@@ -4,7 +4,6 @@ public class Operatore implements Runnable {
     private Magazzino magazzino;
     private int numPaccCompl;
     private int numPaccFall;
-
     public int getNumPaccFall() {
         return numPaccFall;
     }
@@ -28,8 +27,26 @@ public class Operatore implements Runnable {
 
     @Override
     public void run() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'run'");
+       if(pacco.isStato() == false){
+            pacco.setStato(true);
+            setTentativi(tentativi+1);
+            if(pacco.isStato() == true){
+                setNumPaccCompl(numPaccCompl+1);
+                magazzino.setAssegnazioniRiuscite(magazzino.getAssegnazioniRiuscite()+1);
+                magazzino.setPacchiAsssegnati(magazzino.getPacchiAsssegnati()+1);
+                magazzino.setPacchiRimanenti(magazzino.getPacchiRimanenti()-1);
+            }else{
+                setNumPaccFall(numPaccFall+1);
+                magazzino.setAssegnazioneFalite(magazzino.getAssegnazioneFalite()+1);
+                magazzino.setTentativiFaliti(tentativi);
+            }
+            if(magazzino.getNumeroPacci() >= magazzino.getAssegnazioniRiuscite()){
+                System.out.println("Tutti i pacchi sono stati consegnati");
+            } else {
+
+            }
+            
+       };
     }
 
     public String getNome() {
