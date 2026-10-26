@@ -8,7 +8,7 @@ public class Pacco {
         this.stato = false;
     }
 
-
+  
     public int getNumeroPacco() {
         return numeroPacco;
     }

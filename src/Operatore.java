@@ -28,6 +28,19 @@ public class Operatore implements Runnable {
 
     @Override
     public void run() {
+        int index= 0;
+        while (index <= magazzino.getNumeroPacci()) {
+            this.pacco = magazzino.getPacchi().get(index);
+            prendi();
+            try {
+                Thread.sleep(2500);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void prendi() {
         if (pacco.isStato() == false) {
             pacco.setStato(true);
             setTentativi(tentativi + 1);

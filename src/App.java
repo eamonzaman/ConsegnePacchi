@@ -10,9 +10,16 @@ public class App {
         }
 
         for (int i = 1; i <= 50; i++) {
-            operatori.add(new Thread(new Operatore("sc" + i, magazzino1))); 
-            System.out.println(operatori.get(i-1).getName());
+            operatori.add(new Thread(new Operatore("sc" + i, magazzino1)));
+          //  System.out.println(operatori.get(i - 1).getName());
         }
 
+        while (magazzino1.pacchiRimanenti > 0) {
+            for (Thread thread : operatori) {
+                    thread.start();
+            }
+        }
+        System.out.println("Pacchi totali: " + magazzino1.numeroPacci +"\n Assegnazioni Riuscite: " + magazzino1.getAssegnazioniRiuscite() + "\n Assegnazione Falite: " + magazzino1.getAssegnazioneFalite());
+        System.out.println("pacchiRimanenti: " + magazzino1.getPacchiRimanenti() + "Tentativi faliti: " + magazzino1.getTentativiFaliti());
     }
 }

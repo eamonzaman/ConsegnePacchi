@@ -7,15 +7,17 @@ public class Magazzino {
     int tentativiFaliti;
     int assegnazioniRiuscite;
     int assegnazioneFalite;
-    ArrayList<Pacco> pacchi = new ArrayList<>( );
+    ArrayList<Pacco> pacchi = new ArrayList<>();
 
     public Magazzino(int numeroPacci) {
         this.numeroPacci = numeroPacci;
         this.pacchiAsssegnati = numeroPacci;
         for (int i = 0; i < numeroPacci; i++) {
-                this.pacchi.add(new Pacco(i+1));
-        } 
+            this.pacchi.add(new Pacco(i + 1));
+        }
     }
+
+   
 
     public int getNumeroPacci() {
         return numeroPacci;
@@ -72,5 +74,5 @@ public class Magazzino {
     public void setPacchi(ArrayList<Pacco> pacchi) {
         this.pacchi = pacchi;
     }
-    
+
 }
